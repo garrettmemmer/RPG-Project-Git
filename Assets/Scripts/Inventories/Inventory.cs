@@ -244,6 +244,15 @@ namespace GameDevTV.Inventories
         /// <returns>-1 if no stack exists or if the item is not stackable.</returns>
         private int FindStack(InventoryItem item)
         {
+            if (item == null)
+            {
+                Debug.LogWarning("DoSomething was called, but the 'target' variable is NULL!");
+                return -1; // exit early so you don't get null reference errors
+            }
+
+            // Safe to use target here
+            Debug.Log("Target is: " + item.name);
+        
             if (!item.IsStackable())
             {
                 return -1;
